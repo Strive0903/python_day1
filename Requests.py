@@ -97,7 +97,7 @@ json: JSON格式的数据，Request的内容
 异常处理    #使用try...except捕获异常
 调用函数
 '''
-import requests
+'''import requests
 
 def getHTML.Text(url):
     try:
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     url = "http://www.baidu.com"
     print(getHTML.Text(url))
 
-
+'''
 # import requests
 # from requests.exceptions import ReadTimeout,HTTPError,RequestException
 #
