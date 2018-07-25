@@ -22,6 +22,14 @@ scrapy重要组件
 2、cd city58
 3、scrapy genspider city58_test 58.com # 爬虫名称与项目名称不同
 
+
+组件爬虫介绍：
+1、name属性，不可重复，决定scrapy启动哪个爬虫
+2、首先，从start_urls里面读取链接
+     然后，自动调用start_requests函数
+     最后，从函数请求的结果自动调用默认解析器parse
+3、启动方法start_requests(),重写方法，是否放弃 start_urls；如果不写回调函数，默认用parse
+
 '''
 
 
