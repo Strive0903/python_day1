@@ -18,6 +18,7 @@ df.to_csv("nummpy.csv")
 '''
 爬虫三步走
 '''
+'''
 import requests
 from lxml import etree
 import pandas as pd
@@ -36,3 +37,18 @@ df = pd.DataFrame(file)
 print(df.head)
 df.to_csv("/Users/Young/Desktop/DuanPin.csv",'w')
 
+'''
+import requests
+r = requests.get('https://book.douban.com/subject/1084336/comments/').text
+
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(r,'lxml')
+pattern = soup.find_all('p','comment-content')
+#for item in pattern:
+#    print(item.string)
+import pandas
+comments = []
+for item in pattern:
+    comments.append(item.get_text())
+df = pandas.DataFrame(comments)
+df.to_csv('comments.csv', encoding = "utf_8_sig")
