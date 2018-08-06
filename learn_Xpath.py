@@ -75,7 +75,7 @@ print(s2.xpath('//li/text()')) # ['Quote 1', 'Quote 2 with ', 'Quote 3 with ', '
 print(s2.xpath('//li[1]/text()')) #['Quote 1']
 print(s2.xpath('//li[position()=1]/text()')) #['Quote 1']
 # 输出第二个li
-print(s2.xpath('//li[2]/text()')) #
+print(s2.xpath('//li[2]/text()')) #切片
 print(s2.xpath('//li[position()=2]/text()')) #['Quote 2 with ']
 # 输出li下面有a的
 print(s2.xpath('//li[a]/text()')) # ['Quote 2 with ', 'Quote 3 with ']

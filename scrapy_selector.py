@@ -11,8 +11,12 @@ element,element li,div  选择所有<li>元素和所有<div>元素
 element element li div  选择<li>元素内部的所有<div>元素
 element>element li>div  选择父元素为<div>元素的所有<p>元素
 
+# 返回selectorlist
+
+切片、嵌套、脱壳
 '''
 
+'''
 # 练习1 CSS选择器
 from scrapy import Selector
 
@@ -26,9 +30,8 @@ sel = Selector(text=text)
 
 # 选择class="top"的元素：
 print(sel.css(".top"))
+print(sel.css("li.top"))
 print(type(sel.css(".top"))) # 返回SelectorList实例
-
-
 
 # 选择id="li_a_div"的元素：
 print(sel.css("#li_a_div"))
@@ -47,6 +50,35 @@ print(sel.css('li > div').extract_first())
 
 # 选择所有的div元素和所有的li元素：
 print(sel.css("li,div")) #与li div区别？
-print(sel.css("li,div").extract())
+print(sel.css("li,div").extract()) # 脱壳
 print(sel.css("li,div").extract_first())
+
+'''
+
+
+# 练习2 Xpath选择器
+from scrapy import Selector
+
+with open('test.html', encoding='utf-8') as f:
+    text = f.read()
+
+sel = Selector(text=text)
+print(sel.xpath('/html/body/ul/li'))
+print(sel.xpath('//div'))
+print(sel.xpath('//li')[2].xpath('./p')) # 切片，嵌套
+print(sel.xpath('//li')[2].xpath('./p')[0])
+print(sel.xpath('/html/body/ul/li/a/div').extract_first())
+
+
+
+
+'''
+ipy = PyQuery(text)
+
+items = ipy('li')
+for i in items.items():
+    print(i.attr('class'))
+
+'''
+
 
